@@ -10,7 +10,9 @@ export default function Account() {
         videoUrl="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         muted={true}
       />
-      <div className="browse"></div>
+      <div className="browse">
+        <h1>welcome</h1>
+      </div>
     </div>
   );
 }

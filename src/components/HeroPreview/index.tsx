@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import {
-  PlayCircleOutlined,
-  InfoCircleOutlined,
-  SoundOutlined,
-} from "@ant-design/icons";
+import { PlayCircleOutlined, InfoCircleOutlined } from "@ant-design/icons";
 
 type HeroPreviewProps = {
   videoUrl: string;
@@ -15,7 +11,7 @@ type HeroPreviewProps = {
 export default function HeroPreview({
   videoUrl,
   muted = true,
-}: HeroPreviewProps) {
+}: Readonly<HeroPreviewProps>) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMuted, setIsMuted] = useState(muted);
@@ -69,34 +65,52 @@ export default function HeroPreview({
         loop
         playsInline
         muted={isMuted}
-      />
+      >
+        <track kind="captions" />
+      </video>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/10 z-10"></div>
 
       {/* Content */}
-      <div className="absolute z-20 bottom-20 left-10 max-w-3xl space-y-6">
+      <div className="absolute z-20 bottom-20 max-w-3xl space-y-6 pl-[100px]">
         <h1 className="text-5xl font-extrabold">Sakamoto Days</h1>
         <p className="text-lg text-white/80 max-w-lg">
           He was the ultimate assassin. Now he just wants a peaceful life.
         </p>
 
-        <div className="flex items-center gap-4">
-          <button className="cursor-pointer bg-white text-black px-6 py-2 rounded flex items-center gap-2 font-medium hover:bg-gray-300 transition">
-            <PlayCircleOutlined />
-            Play
-          </button>
-          <button className="cursor-pointer bg-white/30 text-white px-6 py-2 rounded flex items-center gap-2 font-medium hover:bg-white/40 transition">
-            <InfoCircleOutlined />
-            More Info
-          </button>
+        <div className="flex items-center justify-between w-[100%]">
+          <div className="flex items-center gap-4">
+            <button className="cursor-pointer bg-white text-black px-6 py-2 rounded flex items-center gap-2 font-medium hover:bg-gray-300 transition">
+              <PlayCircleOutlined />
+              Play
+            </button>
+            <button className="cursor-pointer bg-white/30 text-white px-6 py-2 rounded flex items-center gap-2 font-medium hover:bg-white/40 transition">
+              <InfoCircleOutlined />
+              More Info
+            </button>
+          </div>
           {/* 🔊 Mute/Unmute Toggle */}
           <button
             onClick={() => setIsMuted((prev) => !prev)}
             className="ml-4 p-2 bg-white/30 rounded-full text-white hover:bg-white/50 transition cursor-pointer"
             title={isMuted ? "Unmute" : "Mute"}
           >
-            {isMuted ? <SoundOutlined /> : <SoundOutlined />}
+            {isMuted ? (
+              <img
+                src="/assets/volume-mute.svg"
+                alt="mute"
+                width={24}
+                height={24}
+              />
+            ) : (
+              <img
+                src="/assets/volume-full.svg"
+                alt="full"
+                width={24}
+                height={24}
+              />
+            )}
           </button>
         </div>
       </div>

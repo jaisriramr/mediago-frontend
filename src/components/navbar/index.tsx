@@ -3,7 +3,7 @@
 import Image from "next/image";
 import "./index.css";
 import Link from "next/link";
-import { Button, Dropdown, Input, MenuProps, message } from "antd";
+import { Dropdown, Input, MenuProps } from "antd";
 import {
   CaretDownOutlined,
   SearchOutlined,
@@ -110,11 +110,8 @@ const Navbar = () => {
         <Link href={"/browse"} className="text-[16px]">
           Home
         </Link>
-        <Link href={"/browse/tv-shows"} className="text-[16px]">
-          TV Shows
-        </Link>
-        <Link href={"/browse/movies"} className="text-[16px]">
-          Movies
+        <Link href={"/about"} className="text-[16px]">
+          About
         </Link>
       </div>
       <div className="flex items-center justify-between gap-x-[20px]">
@@ -145,17 +142,14 @@ const Navbar = () => {
           placement="bottomRight"
           overlayClassName="notification-dropdown"
         >
-          <a
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center gap-x-2 cursor-pointer"
-          >
+          <div className="flex items-center gap-x-2 cursor-pointer">
             <Image
               src="/assets/notification.svg"
               alt="Notification Icon"
               width={24}
               height={24}
             />
-          </a>
+          </div>
         </Dropdown>
 
         <Dropdown
@@ -164,10 +158,7 @@ const Navbar = () => {
           placement="bottomRight"
           overlayClassName="profile-dropdown"
         >
-          <a
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center gap-x-2 cursor-pointer"
-          >
+          <div className="flex items-center gap-x-2 cursor-pointer">
             <Image
               src="/assets/user-profile.svg"
               alt="User Icon"
@@ -175,7 +166,7 @@ const Navbar = () => {
               height={24}
             />
             <CaretDownOutlined />
-          </a>
+          </div>
         </Dropdown>
       </div>
     </nav>
