@@ -1,26 +1,12 @@
-"use client";
-
-import Navbar from "@/components/navbar";
-import "./search.css";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import SearchClient from "@/components/SearchClient";
+import { Suspense } from "react";
 
 export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q");
-  const router = useRouter();
-
-  useEffect(() => {
-    if (query?.length == 0) {
-      router.push("/browse");
-    }
-    console.log({ query });
-  }, [query]);
-
   return (
-    <div className="h-[100vh]">
-      <Navbar />
-      <div className="browse"></div>
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchClient />
+      </Suspense>
     </div>
   );
 }

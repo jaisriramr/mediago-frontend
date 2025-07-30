@@ -9,7 +9,7 @@ import {
   SearchOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type Notification = {
@@ -108,74 +108,83 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="h-[80px] px-[100px] flex items-center justify-between navbar-container">
-      <div className="flex items-center justify-between gap-x-[40px]">
-        <Link href={"/browse"}>
-          <Image src="/assets/MediaGo.svg" alt="logo" width={120} height={40} />
-        </Link>
-        <Link href={"/browse"} className="text-[16px]">
-          Home
-        </Link>
-        <Link href={"/about"} className="text-[16px]">
-          About
-        </Link>
-      </div>
-      <div className="flex items-center justify-between gap-x-[20px]">
-        {!isSearchVisible && searchQuery.length == 0 && (
-          <Image
-            src="/assets/search.svg"
-            alt="Search Icon"
-            width={24}
-            height={24}
-            className="cursor-pointer"
-            onClick={() => setIsSearchVisible(!isSearchVisible)}
-          />
-        )}
-        {(isSearchVisible || searchQuery.length > 0) && (
-          <Input
-            onBlur={() => setIsSearchVisible(!isSearchVisible)}
-            prefix={<SearchOutlined />}
-            className="search-input"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            autoFocus
-          />
-        )}
-
-        <Dropdown
-          menu={{ items: notificationItems }}
-          trigger={["click"]}
-          placement="bottomRight"
-          overlayClassName="notification-dropdown"
-        >
-          <div className="flex items-center gap-x-2 cursor-pointer">
-            <Image
-              src="/assets/notification.svg"
-              alt="Notification Icon"
-              width={24}
-              height={24}
-            />
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <nav className="h-[80px] px-[100px] flex items-center justify-between navbar-container">
+          <div className="flex items-center justify-between gap-x-[40px]">
+            <Link href={"/browse"}>
+              <Image
+                src="/assets/MediaGo.svg"
+                alt="logo"
+                width={120}
+                height={40}
+              />
+            </Link>
+            <Link href={"/browse"} className="text-[16px]">
+              Home
+            </Link>
+            <Link href={"/about"} className="text-[16px]">
+              About
+            </Link>
           </div>
-        </Dropdown>
+          <div className="flex items-center justify-between gap-x-[20px]">
+            {!isSearchVisible && searchQuery.length == 0 && (
+              <Image
+                src="/assets/search.svg"
+                alt="Search Icon"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+                onClick={() => setIsSearchVisible(!isSearchVisible)}
+              />
+            )}
+            {(isSearchVisible || searchQuery.length > 0) && (
+              <Input
+                onBlur={() => setIsSearchVisible(!isSearchVisible)}
+                prefix={<SearchOutlined />}
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoFocus
+              />
+            )}
 
-        <Dropdown
-          menu={{ items }}
-          trigger={["click"]}
-          placement="bottomRight"
-          overlayClassName="profile-dropdown"
-        >
-          <div className="flex items-center gap-x-2 cursor-pointer">
-            <Image
-              src="/assets/user-profile.svg"
-              alt="User Icon"
-              width={24}
-              height={24}
-            />
-            <CaretDownOutlined />
+            <Dropdown
+              menu={{ items: notificationItems }}
+              trigger={["click"]}
+              placement="bottomRight"
+              overlayClassName="notification-dropdown"
+            >
+              <div className="flex items-center gap-x-2 cursor-pointer">
+                <Image
+                  src="/assets/notification.svg"
+                  alt="Notification Icon"
+                  width={24}
+                  height={24}
+                />
+              </div>
+            </Dropdown>
+
+            <Dropdown
+              menu={{ items }}
+              trigger={["click"]}
+              placement="bottomRight"
+              overlayClassName="profile-dropdown"
+            >
+              <div className="flex items-center gap-x-2 cursor-pointer">
+                <Image
+                  src="/assets/user-profile.svg"
+                  alt="User Icon"
+                  width={24}
+                  height={24}
+                />
+                <CaretDownOutlined />
+              </div>
+            </Dropdown>
           </div>
-        </Dropdown>
-      </div>
-    </nav>
+        </nav>
+      </Suspense>
+    </div>
   );
 };
 
