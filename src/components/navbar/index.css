@@ -1,0 +1,76 @@
+.search-input {
+    width: 240px !important;
+    color: #fff !important;
+    background-color: var(--background) !important;
+}
+
+.search-input .ant-input:focus {
+  border-color: white !important;
+  outline-color: white !important;
+}
+
+.profile-dropdown .ant-dropdown-menu {
+  background-color: #000000c2 !important; /* transparent black */
+  color: white;
+  border-radius: 10px;
+}
+
+.profile-dropdown .ant-dropdown-menu-item {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.profile-dropdown .ant-dropdown-menu-item:hover {
+  background-color: #121212 !important;
+}
+
+.notification-dropdown .ant-dropdown-menu {
+  background-color: #000000c2 !important; /* transparent black */
+  color: white;
+  border-radius: 10px;
+  padding: 0 !important;
+}
+
+.notification-dropdown .ant-dropdown-menu-item {
+  background-color: transparent !important;
+  color: white !important;
+  margin-bottom: 8px;
+  padding: 0 !important;
+}
+
+.navbar-container {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}
+
+.notification-box {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    padding: 10px !important;
+    .notification-image {
+        width: 120px !important;
+        height: auto !important;
+        border-radius: 8px;
+    }
+    .notification-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        h6 {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        p {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+
+.notification-box:hover {
+    background-color: #121212 !important;
+}
