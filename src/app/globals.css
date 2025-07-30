@@ -1,14 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --primary: #7F5AF0;
+  --accent: #2CB67D;
+  --background: #16161A;
   --foreground: #171717;
+  --card: #242629;
+  --text: #FFFFFE;
+  --text-primary: #94A1B2;
+  --border: #2CB67D;
+  --warning: #F5A524;
+  --error: #EF4565;
+  --logo-font: "Koulen";
+  --primary-font: "Roboto", sans-serif;
+  --landing-font: 'Koulen', sans-serif;
+  --secondary-font: "Open Sans", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--primary-font);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,5 +34,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--primary-font);
+}
+
+.hero-container {
+  background-image: url('/assets/background-image.png');
+}
+
+.hero-text {
+  font-family: var(--landing-font);
 }
