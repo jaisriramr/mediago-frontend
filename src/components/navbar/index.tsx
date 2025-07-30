@@ -12,9 +12,15 @@ import {
 import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+type Notification = {
+  key: string;
+  label: React.JSX.Element;
+};
+
 const Navbar = () => {
   const [isSearchVisible, setIsSearchVisible] = React.useState(false);
-  const [notificationItems, setNotificationItems] = React.useState<any>();
+  const [notificationItems, setNotificationItems] =
+    React.useState<Notification[]>();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = React.useState("");
   const searchParams = useSearchParams();
