@@ -18,7 +18,7 @@ const Navbar = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = React.useState("");
   const searchParams = useSearchParams();
-  const query: any = searchParams.get("q");
+  const query = searchParams.get("q");
 
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
