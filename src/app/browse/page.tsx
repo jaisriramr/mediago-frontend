@@ -2,7 +2,7 @@ import Navbar from "@/components/navbar";
 import "./browse.css";
 import HeaderPreview from "@/components/HeroPreview";
 
-export default function Account() {
+export default function BrowsePage() {
   return (
     <div className="h-[100vh]">
       <Navbar />

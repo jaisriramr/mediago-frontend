@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="hero-container">
       <nav className="flex items-center justify-between px-[100px] h-[100px]">
-        <Image src="/assets/MediaGo.svg" alt="Logo" width={140} height={50} />
+        <Link href={"/browse"} className="cursor-pointer">
+          <Image src="/assets/MediaGo.svg" alt="Logo" width={140} height={50} />
+        </Link>
         <button className="bg-[var(--primary)] text-white h-[36px] w-[80px] rounded cursor-pointer">
           Login
         </button>

@@ -5,7 +5,7 @@ import "./search.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-export default function Account() {
+export default function SearchPage() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
   const router = useRouter();
